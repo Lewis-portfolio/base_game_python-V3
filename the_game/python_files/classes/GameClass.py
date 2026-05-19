@@ -9,7 +9,7 @@ import pygame as pg
 import sys
 from ..settings.dev_settings import *
 from ..settings.colours import *
-from .WallClass import Wall
+from .ObstacleClass import Wall
 from .PlayerClass import PlayerClass
 
 
@@ -21,10 +21,11 @@ class Game:
         self.clock = pg.time.Clock()
         pg.key.set_repeat(500, 100)
         self.load_data()
-        # Pre start vars
+        # Pre start vars:
+        self.world_objects = {}
         # Variables ready for the groups:
         self.all_sprites = None
-        self.walls = None
+        self.obstacles = None
         self.player = None
         # Variable for game play
         self.playing = True
@@ -38,7 +39,7 @@ class Game:
         """ Does all the setup for the game.
         Also loads the variables. """
         self.all_sprites = pg.sprite.Group()
-        self.walls = pg.sprite.Group()
+        self.obstacles = pg.sprite.Group()
         self.player = PlayerClass(self, (10, 10))
         for x in range(10, 20):
             Wall(self, (x, 5))

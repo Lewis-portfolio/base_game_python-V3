@@ -24,11 +24,22 @@ class DefaultObject(pg.sprite.Sprite):
         self.y = coordinates[1]
         self.rect.x = self.x * TILE_SIZE
         self.rect.y = self.y * TILE_SIZE
+        self.game.world_objects[self.x, self.y] = self
+        self.impassable = False
 
     def move(self, dx=0, dy=0):
         """ Moves the mob by the given direction. """
-        self.x += dx
-        self.y += dy
+        if not self.check_collision(dx, dy):  # Checks for collisions
+            self.x += dx
+            self.y += dy
+
+    def check_collision(self, dx= 0, dy= 0):
+        """ Checks to see if two objects are colliding with each other. """
+        if (self.x + dx, self.y + dy) in self.game.world_objects:
+            obj = self.game.world_objects[self.x + dx, self.y + dy]
+            if obj.impassable:  # Checks to see if the object is impassable
+                return True
+        return False
 
     def update(self):
         self.rect.x = self.x * TILE_SIZE

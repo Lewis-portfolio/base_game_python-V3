@@ -14,7 +14,7 @@ class Wall(pg.sprite.Sprite):
     t_size = TILE_SIZE
 
     def __init__(self, game, coordinates: tuple[int, int], spr_size: tuple[int, int] = (t_size, t_size)) -> None:
-        self.groups = game.all_sprites, game.walls
+        self.groups = game.all_sprites, game.obstacles
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = pg.surface.Surface(spr_size)
@@ -25,3 +25,5 @@ class Wall(pg.sprite.Sprite):
         self.y = coordinates[1]
         self.rect.x = coordinates[0] * TILE_SIZE
         self.rect.y = coordinates[1] * TILE_SIZE
+        self.game.world_objects[self.x, self.y] = self
+        self.impassable = True

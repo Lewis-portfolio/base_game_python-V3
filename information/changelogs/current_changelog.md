@@ -1,38 +1,29 @@
 
 ---
-<h1>Changelog dated 10, 05, 2026:</h1>
+<h1>Changelog dated 19, 05, 2026:</h1>
 <h2>Overview:</h2>
-<p>This has all been initial set up for the project.</p>
-<p>This is runnable, but it won't do much at this moment.</p>
-<p>There's no collision for the walls yet</p>
+Today I've managed to make it so that there is collision checking and validating.
+
 
 <h2>Added:</h2>
+- Classes:
+  1. The main object class:
+     - Added a function to see if something is in the path of a character's movement.
+       - This then checks if it's considered impassable like a wall.
+- Misc:
+  1. Added a world objects that stores the data for the objects in the world.
 
-- Added numerous files to handle different aspects of the code. This includes:
-  - Misc files:
-    1. The main file.
-       - Used as the main executable.
-    2. A credits file.
-        - Used to store the credits for the game
-    3. A current changelog file.
-       - Used to display the current changelog.
-  - Classes:
-    1. The game class. 
-       - Used to handle interactions in the game.
-    2. The main object class. 
-        - Used as a parent class for other classes like the player class.
-    3. The wall class. 
-        - Specifically used for walls.
-        - Soon to be used for obstacles
-    4. The player class.
-        - Used for the player to interact with the game.
-  - Settings:
-    1. A colours file. 
-       - Used for colours in the game.
-    2. dev settings file.
-       - This is for the devs to change when required.
 
 <h2>Changed:</h2>
-- Changed the git ignore file to prevent the .idea directory from being pushed
+- Classes:
+  1. The main class:
+     - Changed the movement slightly so that it uses a separate function to check its collisions before attempting to move.
+  2. The wall class is now called obstacle class
+     - This is to futureproof the class for generalised obstacles.
+- Misc:
+  1. Changed the name of a group from 'walls' to 'obstacles'
+     - This is so that when adding an obstacle it goes into a correctly named group.
+
 <h2>Removed:</h2>
-- Nothing as this is just the beginning of the project
+Nothing this time
+
